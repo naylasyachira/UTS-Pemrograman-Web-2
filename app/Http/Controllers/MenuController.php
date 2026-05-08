@@ -74,7 +74,10 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+         return view('menus.show', [
+        'title' => 'Detail Menu',
+        'menu' => $menu,
+    ]);
     }
 
     /**

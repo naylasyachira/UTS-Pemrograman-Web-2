@@ -33,6 +33,45 @@
 
                 </table>
 
+                <h4 class="mt-5 mb-3">Menu List</h4>
+
+                <table class="table table-bordered">
+
+                    <thead class="table-danger">
+                        <tr>
+                            <th>No</th>
+                            <th>Menu Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @forelse ($category->menus as $menu)
+                            <tr>
+
+                                <td>{{ $loop->iteration }}</td>
+
+                                <td>{{ $menu->name }}</td>
+
+                                <td>Rp {{ number_format($menu->price) }}</td>
+
+                                <td>{{ $menu->stock }}</td>
+
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    Data menu belum tersedia
+                                </td>
+                            </tr>
+                        @endforelse
+
+                    </tbody>
+
+                </table>
+
             </div>
         </div>
 

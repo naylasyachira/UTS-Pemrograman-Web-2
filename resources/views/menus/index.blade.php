@@ -84,6 +84,9 @@
                                 <td>{{ $menu->description }}</td>
 
                                 <td>
+                                    <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-info btn-sm">
+                                        Detail
+                                    </a>
                                     <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
