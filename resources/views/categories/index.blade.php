@@ -5,6 +5,14 @@
 
         <h2 class="mb-4 text-danger fw-bold">{{ $title }}</h2>
 
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <a href="{{ route('categories.create') }}" class="btn btn-danger mb-3">
+            + Add Category
+        </a>
         <div class="card shadow border-0">
             <div class="card-body">
                 <form action="{{ route('categories.index') }}" method="GET" class="mb-3">
@@ -26,7 +34,7 @@
                     <thead class="table-danger">
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
+                            <th>Menu Category</th>
                             <th>Description</th>
                             <th>Status</th>
                         </tr>

@@ -30,7 +30,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create', [
+        'title' => 'Create Category'
+    ]);
     }
 
     /**
@@ -38,7 +40,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'name' => 'required|max:255',
+        'description' => 'required',
+        'status' => 'required',
+    ], [
+        'name.required' => 'Menu wajib diisi',
+        'description.required' => 'Description wajib diisi',
+        'status.required' => 'Status wajib dipilih',
+    ]);
+
+    Category::create($validated);
+
+    return to_route('categories.index')
+        ->withSuccess('Category berhasil ditambahkan');
     }
 
     /**
