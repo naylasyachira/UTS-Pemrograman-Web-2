@@ -62,6 +62,7 @@
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Description</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -81,6 +82,12 @@
                                 <td>{{ $menu->stock }}</td>
 
                                 <td>{{ $menu->description }}</td>
+
+                                <td>
+                                    <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
+                                </td>
 
                             </tr>
                         @endforeach
