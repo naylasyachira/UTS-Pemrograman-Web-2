@@ -5,6 +5,15 @@
 
         <h2 class="mb-4 text-danger fw-bold">{{ $title }}</h2>
 
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <a href="{{ route('menus.create') }}" class="btn btn-danger mb-3">
+            + Add Menu
+        </a>
         <div class="card shadow border-0">
             <div class="card-body">
 

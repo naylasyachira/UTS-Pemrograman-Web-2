@@ -38,7 +38,10 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('menus.create', [
+        'title' => 'Create Menu',
+        'categories' => Category::latest()->get(),
+    ]);
     }
 
     /**
@@ -46,7 +49,24 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'category_id' => 'required',
+        'name' => 'required|max:255',
+        'price' => 'required|numeric',
+        'stock' => 'required|numeric',
+        'description' => 'required',
+    ], [
+        'category_id.required' => 'Category wajib dipilih',
+        'name.required' => 'Menu name wajib diisi',
+        'price.required' => 'Price wajib diisi',
+        'stock.required' => 'Stock wajib diisi',
+        'description.required' => 'Description wajib diisi',
+    ]);
+
+    Menu::create($validated);
+
+    return to_route('menus.index')
+        ->withSuccess('Menu berhasil ditambahkan');
     }
 
     /**
