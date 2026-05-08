@@ -37,6 +37,7 @@
                             <th>Menu Category</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -47,6 +48,11 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
                                 <td>{{ $category->status }}</td>
+                                <td>
+                                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
