@@ -13,10 +13,25 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow">
         <div class="container">
-            <a class="navbar-brand" href="/">Food Menu App</a>
+
+            <a class="navbar-brand fw-bold" href="/">
+                Food Menu App
+            </a>
+
+            <div class="navbar-nav ms-auto">
+
+                <a href="{{ route('categories.index') }}" class="nav-link text-white">
+                    Category
+                </a>
+
+                <a href="{{ route('menus.index') }}" class="nav-link text-white">
+                    Menu
+                </a>
+
+            </div>
+
         </div>
     </nav>
-
     @yield('content')
 
 </body>

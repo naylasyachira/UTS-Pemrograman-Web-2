@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
 class CategoryFactory extends Factory
 {
@@ -18,26 +17,9 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-    'name' => fake()->randomElement([
-        'Makanan Berat',
-        'Minuman',
-        'Dessert',
-        'Snack',
-        'Seafood'
-    ]),
-
-    'description' => fake()->randomElement([
-        'Kategori makanan tradisional',
-        'Kategori minuman segar',
-        'Kategori dessert manis',
-        'Kategori seafood pilihan',
-        'Kategori camilan favorit',
-    ]),
-
-    'status' => fake()->randomElement([
-        'Available',
-        'Unavailable'
-    ]),
-];
+            'name' => fake()->word(),
+            'description' => fake()->sentence(),
+            'status' => 'Available',
+        ];
     }
 }
