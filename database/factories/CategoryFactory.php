@@ -18,19 +18,26 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->randomElement([
-            'Makanan Berat',
-            'Minuman',
-            'Dessert',
-            'Snack',
-            'Seafood'
-            ]),
+    'name' => fake()->randomElement([
+        'Makanan Berat',
+        'Minuman',
+        'Dessert',
+        'Snack',
+        'Seafood'
+    ]),
 
-            'description' => fake()->sentence(),
-            'status' => fake()->randomElement([
-            'Available',
-            'Unavailable'
-             ]),
-        ];
+    'description' => fake()->randomElement([
+        'Kategori makanan tradisional',
+        'Kategori minuman segar',
+        'Kategori dessert manis',
+        'Kategori seafood pilihan',
+        'Kategori camilan favorit',
+    ]),
+
+    'status' => fake()->randomElement([
+        'Available',
+        'Unavailable'
+    ]),
+];
     }
 }

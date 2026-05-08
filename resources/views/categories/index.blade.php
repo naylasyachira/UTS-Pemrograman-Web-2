@@ -1,0 +1,53 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container mt-4">
+
+        <h2 class="mb-4 text-danger fw-bold">{{ $title }}</h2>
+
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <form action="{{ route('categories.index') }}" method="GET" class="mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" name="search" class="form-control" placeholder="Search category..."
+                                value="{{ request('search') }}">
+                        </div>
+
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-danger">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-hover align-middle">
+                    <thead class="table-danger">
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->description }}</td>
+                                <td>{{ $category->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                {{ $categories->links('pagination::bootstrap-5') }}
+
+            </div>
+        </div>
+
+    </div>
+@endsection
