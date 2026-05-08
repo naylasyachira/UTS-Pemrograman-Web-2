@@ -119,6 +119,9 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+
+    return to_route('menus.index')
+        ->withSuccess('Menu berhasil dihapus');
     }
 }

@@ -87,6 +87,18 @@
                                     <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
+
+                                    <form action="{{ route('menus.destroy', $menu->id) }}" method="POST" class="d-inline">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Yakin ingin menghapus data ini?')">
+
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
 
                             </tr>
