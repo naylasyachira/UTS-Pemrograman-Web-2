@@ -41,13 +41,26 @@
                                 <td>{{ $menu->deleted_at }}</td>
 
                                 <td>
-                                    <form action="{{ route('menus.restore', $menu->id) }}" method="POST">
+                                    <form action="{{ route('menus.restore', $menu->id) }}" method="POST" class="d-inline">
 
                                         @csrf
                                         @method('PUT')
 
                                         <button type="submit" class="btn btn-success btn-sm">
                                             Restore
+                                        </button>
+
+                                    </form>
+
+                                    <form action="{{ route('menus.force-delete', $menu->id) }}" method="POST"
+                                        class="d-inline">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Yakin ingin menghapus permanen?')">
+                                            Force Delete
                                         </button>
 
                                     </form>

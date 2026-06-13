@@ -180,4 +180,14 @@ public function restore($id)
     return to_route('menus.trash')
         ->withSuccess('Menu berhasil direstore');
 }
+
+public function forceDelete($id)
+{
+    Menu::onlyTrashed()
+        ->findOrFail($id)
+        ->forceDelete();
+
+    return to_route('menus.trash')
+        ->withSuccess('Menu berhasil dihapus permanen');
+}
 }

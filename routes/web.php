@@ -13,4 +13,6 @@ Route::get('/menus/trash', [MenuController::class, 'trash'])
     ->name('menus.trash');
 Route::put('/menus/{id}/restore', [MenuController::class, 'restore'])
     ->name('menus.restore');
+Route::delete('/menus/{id}/force-delete', [MenuController::class, 'forceDelete'])
+    ->name('menus.force-delete');
 Route::resource('menus', MenuController::class);
