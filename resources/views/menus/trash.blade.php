@@ -21,6 +21,7 @@
                             <th>Menu Name</th>
                             <th>Rating</th>
                             <th>Deleted At</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -39,10 +40,23 @@
 
                                 <td>{{ $menu->deleted_at }}</td>
 
+                                <td>
+                                    <form action="{{ route('menus.restore', $menu->id) }}" method="POST">
+
+                                        @csrf
+                                        @method('PUT')
+
+                                        <button type="submit" class="btn btn-success btn-sm">
+                                            Restore
+                                        </button>
+
+                                    </form>
+                                </td>
+
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">
+                                <td colspan="6" class="text-center">
                                     Tidak ada data di trash
                                 </td>
                             </tr>

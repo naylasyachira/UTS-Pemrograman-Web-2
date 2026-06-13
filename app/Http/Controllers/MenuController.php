@@ -160,7 +160,7 @@ class MenuController extends Controller
     return to_route('menus.index')
         ->withSuccess('Menu berhasil dihapus');
     }
-    
+
     public function trash()
 {
     return view('menus.trash', [
@@ -169,5 +169,15 @@ class MenuController extends Controller
             ->latest()
             ->paginate(5),
     ]);
+}
+
+public function restore($id)
+{
+    Menu::onlyTrashed()
+        ->findOrFail($id)
+        ->restore();
+
+    return to_route('menus.trash')
+        ->withSuccess('Menu berhasil direstore');
 }
 }

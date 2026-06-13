@@ -11,5 +11,6 @@ Route::get('/', function () {
 Route::resource('categories', CategoryController::class);
 Route::get('/menus/trash', [MenuController::class, 'trash'])
     ->name('menus.trash');
-
+Route::put('/menus/{id}/restore', [MenuController::class, 'restore'])
+    ->name('menus.restore');
 Route::resource('menus', MenuController::class);
