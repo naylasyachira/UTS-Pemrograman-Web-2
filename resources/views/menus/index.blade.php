@@ -62,6 +62,7 @@
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Description</th>
+                            <th>Rating</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -82,6 +83,8 @@
                                 <td>{{ $menu->stock }}</td>
 
                                 <td>{{ $menu->description }}</td>
+
+                                <td>{{ $menu->rating }}</td>
 
                                 <td>
                                     <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-info btn-sm">

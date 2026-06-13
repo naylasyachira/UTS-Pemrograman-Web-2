@@ -114,6 +114,8 @@ class MenuFactory extends Factory
                 'Menu populer dan paling banyak dipesan',
                 'Pilihan menu terbaik hari ini',
             ]),
+            
+            'rating' => fake()->numberBetween(1, 5),
         ];
     }
 }
