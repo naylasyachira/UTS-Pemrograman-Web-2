@@ -127,10 +127,26 @@ class MenuController extends Controller
 
     ]);
 
-    $menu->update($validated);
+    try {
 
-    return to_route('menus.index')
-        ->withSuccess('Menu berhasil diubah');
+        DB::beginTransaction();
+
+        Menu::create($validated);
+
+        DB::commit();
+
+        return to_route('menus.index')
+            ->withSuccess('Menu berhasil ditambahkan');
+
+    } catch (\Exception $e) {
+
+        DB::rollBack();
+
+        return back()
+            ->withInput()
+            ->withErrors([
+                'error' => 'Terjadi kesalahan saat menyimpan data.'
+            ]);
     }
 
     /**
