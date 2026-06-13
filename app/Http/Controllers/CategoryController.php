@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
         return view('categories.index', [
             'title' => 'Category',
-            'categories' => $category->paginate(5)->withQueryString(),
+            'categories' => $category->paginate(7)->withQueryString(),
         ]);
     }
 
