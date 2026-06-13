@@ -87,6 +87,19 @@
                         @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label>Rating</label>
+
+                        <input type="number" name="rating" min="1" max="5"
+                            class="form-control @error('rating') is-invalid @enderror" value="{{ old('rating') }}">
+
+                        @error('rating')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-danger">
                         Save
                     </button>

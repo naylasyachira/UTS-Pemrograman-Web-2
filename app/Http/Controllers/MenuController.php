@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
@@ -48,26 +49,38 @@ class MenuController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate([
+{
+    $validated = $request->validate([
         'category_id' => 'required',
         'name' => 'required|max:255',
         'price' => 'required|numeric',
         'stock' => 'required|numeric',
         'description' => 'required',
-    ], [
-        'category_id.required' => 'Category wajib dipilih',
-        'name.required' => 'Menu name wajib diisi',
-        'price.required' => 'Price wajib diisi',
-        'stock.required' => 'Stock wajib diisi',
-        'description.required' => 'Description wajib diisi',
+        'rating' => 'required|numeric|min:1|max:5',
     ]);
 
-    Menu::create($validated);
+    try {
 
-    return to_route('menus.index')
-        ->withSuccess('Menu berhasil ditambahkan');
+        DB::beginTransaction();
+
+        Menu::create($validated);
+
+        DB::commit();
+
+        return to_route('menus.index')
+            ->withSuccess('Menu berhasil ditambahkan');
+
+    } catch (\Exception $e) {
+
+        DB::rollBack();
+
+        return back()
+            ->withInput()
+            ->withErrors([
+                'error' => 'Terjadi kesalahan saat menyimpan data.'
+            ]);
     }
+}
 
     /**
      * Display the specified resource.
@@ -103,12 +116,15 @@ class MenuController extends Controller
         'price' => 'required|numeric',
         'stock' => 'required|numeric',
         'description' => 'required',
+        'rating' => 'required|numeric|min:1|max:5',
     ], [
         'category_id.required' => 'Category wajib dipilih',
         'name.required' => 'Menu name wajib diisi',
         'price.required' => 'Price wajib diisi',
         'stock.required' => 'Stock wajib diisi',
         'description.required' => 'Description wajib diisi',
+        'rating.required' => 'Rating wajib diisi',
+
     ]);
 
     $menu->update($validated);
