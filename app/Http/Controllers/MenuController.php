@@ -148,6 +148,7 @@ class MenuController extends Controller
                 'error' => 'Terjadi kesalahan saat menyimpan data.'
             ]);
     }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -159,4 +160,14 @@ class MenuController extends Controller
     return to_route('menus.index')
         ->withSuccess('Menu berhasil dihapus');
     }
+    
+    public function trash()
+{
+    return view('menus.trash', [
+        'title' => 'Trash Menu',
+        'menus' => Menu::onlyTrashed()
+            ->latest()
+            ->paginate(5),
+    ]);
+}
 }

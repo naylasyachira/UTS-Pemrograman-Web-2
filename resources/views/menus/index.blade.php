@@ -13,6 +13,8 @@
 
         <a href="{{ route('menus.create') }}" class="btn btn-danger mb-3">
             + Add Menu
+        </a> <a href="{{ route('menus.trash') }}" class="btn btn-dark mb-3">
+            Trash
         </a>
         <div class="card shadow border-0">
             <div class="card-body">

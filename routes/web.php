@@ -9,4 +9,7 @@ Route::get('/', function () {
 });
 
 Route::resource('categories', CategoryController::class);
+Route::get('/menus/trash', [MenuController::class, 'trash'])
+    ->name('menus.trash');
+
 Route::resource('menus', MenuController::class);
